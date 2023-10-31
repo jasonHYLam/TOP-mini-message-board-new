@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+    form(action="/new", method='POST') 
+        h1='Form'
+        p="author:"
+        input(type="text", name="author")
+        p="message:"
+        input(type="text", name="message")
+        button(type="submit") Submit
+
+
