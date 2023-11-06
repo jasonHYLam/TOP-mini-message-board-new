@@ -1,12 +1,35 @@
 extends layout 
 
 block content 
+    h1='Form'
+
     form(action="/new", method='POST') 
-        h1='Form'
-        p="author:"
-        input(type="text", name="author")
-        p="message:"
-        input(type="text", name="message")
-        button(type="submit") Submit
+        div.form-group
+            label(for='author') Author:
+            input#author.form-control(
+                type="text", 
+                name="author",
+                required='true',
+                value=(message===undefined? '' : message.author)
+                )
+
+        div.form-group
+            label(for='message') Message:
+            input#message.form-control(
+                type="text", 
+                name="message",
+                required='true',
+                value=(message===undefined? '' : message.message)
+                )
+        button.btn(type="submit") Submit
+
+    hr
+    p 
+        a(href='/') All Messages
+
+    if errors 
+        ul 
+            for error in errors     
+                li!= error.msg
 
 

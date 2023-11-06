@@ -1,11 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Mini Message Board :)
+  h4 All messages 
   ul 
     each val in messages 
-      p=val.text
-      p=val.user
-      p=val.added
+      div.message-container
+        p(style='font-weight: bold; font-size: 20px')=val.author
+        p=val.message
+        p.date-text=val.time_added_formatted
+
+  hr
+  p  
+    a(href='/new') Create New Message
 
